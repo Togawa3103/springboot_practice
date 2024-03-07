@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head('一覧')">
+</head>
+
+<body>
+  <div th:replace="fragments/layout :: navbar"></div>
+
+  <div class="container-fluid">
+    <h5>一覧</h5>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+            <th width="1%">ID</th>
+              <th width="10%">日付</th>
+              <th width="10%">名前</th>
+              <th width="10%">出勤</th>
+              <th width="10%">退勤</th>
+              <th width="10%">削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <th:block th:each="employee:${employee}">
+              <td th:text="${employee.id}"></td>
+              <th:block th:each="workinghours:${workinghours}">
+              <th:block th:if="${employee.id == workinghours.id}">
+              <td>
+                <a th:text="${workinghours.day}">
+                </a>
+              </td>
+              <td>
+                <a th:text="${employee.name}" th:href="@{/employees/{id}/update(id=${employee.id})}">
+                </a>
+              </td>
+              <td>
+                <a th:text="${workinghours.starttime}">
+                </a>
+              </td>
+              <td>
+                <a th:text="${workinghours.endtime}">
+                </a>
+              </td>
+              <td>
+                <a th:href="@{/employees/{id}/delete(id=${employee.id})}" onClick="return window.confirm('削除してよろしいですか？')">
+                  <i class="far fa-trash-alt fa-lg" aria-hidden=”true”></i>
+                </a>
+              </td>
+              </th:block>
+            </th:block>
+             </tr>
+            </th:block>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

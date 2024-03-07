@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head('登録')">
+</head>
+
+<body>
+  <div th:replace="fragments/layout :: navbar"></div>
+
+  <form action="#" th:action="@{/employees/create}" method="post">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <p>登録する勤怠情報を入力してください。</p>
+        <label for="name">名前 <span class="badge badge-danger">必須</span></label>
+        <input type="text" id="name" class="form-control" placeholder="(例) 山田　太郎" th:field="*{employee.name}" />
+        <input type="text" id="day" class="form-control" placeholder="20240101" th:field="*{workinghours.day}" />
+        <input type="text" id="starttime" class="form-control" placeholder="900" th:field="*{workinghours.starttime}" />
+        <input type="text" id="endtime" class="form-control" placeholder="1800" th:field="*{workinghours.endtime}" />
+        <span th:if="${#fields.hasErrors('employee.name')}" th:errors="*{employee.name}" style="color: red"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary">登録</button>  
+    </div>
+  </form>
+
+</body>
+</html>

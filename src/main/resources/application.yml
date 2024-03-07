@@ -1,0 +1,33 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+spring:
+  datasource:
+
+    # PostgresのIPアドレス/ポート番号/DB名
+    url: jdbc:postgresql://localhost:5432/SpringTestDB
+
+    # Postgresのユーザ名
+    username: xxxxxxx
+
+    # Postgresのパスワード
+    password: xxxxxxx
+
+    # PostgresのJDBCドライバ
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+
+      # @Entityに対応するテーブルを常にdrop&createする。
+      ddl-auto: update
+
+  thymeleaf:
+    prefix: classpath:/templates/
+  session:
+    store-type: jdbc

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"　xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">>
+
+<head th:replace="~{fragments/layout :: head('Home')}">
+</head>
+
+<body>
+  <div th:replace="~{fragments/layout :: navbar}"></div>
+　<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+  <div class="container-fluid">
+    <h5>メニュー</h5>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a class="nav-link" th:href="@{/employees/create}">
+                <i class="fas fa-plus fa-lg" aria-hidden=”true”></i> 新規登録
+              </a>
+            </h5>
+            <p class="card-text">勤怠を新規登録します。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a class="nav-link" th:href="@{/employees}">
+                <i class="fas fa-list fa-lg" aria-hidden=”true”></i> 一覧
+              </a>
+            </h5>
+            <p class="card-text">勤怠の一覧を表示します。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
